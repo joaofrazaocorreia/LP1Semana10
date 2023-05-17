@@ -88,6 +88,7 @@ namespace PlayerManager3
         /// </summary>
         private void ShowMenu()
         {
+            Console.WriteLine(playerList[0].CompareTo(playerList[1]));
             Console.WriteLine("Menu");
             Console.WriteLine("----\n");
             Console.WriteLine("1. Insert player");
@@ -118,6 +119,7 @@ namespace PlayerManager3
             // Create new player and add it to list
             newPlayer = new Player(name, score);
             playerList.Add(newPlayer);
+            playerList.Sort();
         }
 
         /// <summary>
