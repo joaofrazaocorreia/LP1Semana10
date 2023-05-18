@@ -67,6 +67,9 @@ namespace PlayerManager4
                         ListPlayersWithScoreGreaterThan();
                         break;
                     case "4":
+                        SortPlayerList();
+                        break;
+                     case "5":
                         Console.WriteLine("Bye!");
                         break;
                     default:
@@ -80,7 +83,7 @@ namespace PlayerManager4
                 Console.WriteLine("\n");
 
                 // Loop keeps going until players choses to quit (option 4)
-            } while (option != "4");
+            } while (option != "5");
         }
 
         /// <summary>
@@ -94,7 +97,8 @@ namespace PlayerManager4
             Console.WriteLine("1. Insert player");
             Console.WriteLine("2. List all players");
             Console.WriteLine("3. List players with score greater than");
-            Console.WriteLine("4. Quit\n");
+            Console.WriteLine("4. Sort the player list");
+            Console.WriteLine("5. Quit\n");
             Console.Write("Your choice > ");
         }
 
@@ -186,6 +190,34 @@ namespace PlayerManager4
                     yield return p;
                 }
             }
+        }
+
+        private void SortPlayerList()
+        {
+            Console.WriteLine("1. Sort by score (descending)");
+            Console.WriteLine("2. Sort by name (ascending)");
+            Console.WriteLine("3. Sort by name (descending)");
+            Console.Write("Your choice > ");
+            string option = Console.ReadLine();
+
+            switch (option)
+                {
+                    case "1":
+                        playerList.Sort();
+                        break;
+
+                    case "2":
+                        playerList.Sort(new CompareByName(true));
+                        break;
+
+                    case "3":
+                        playerList.Sort(new CompareByName(false));
+                        break;
+
+                    default:
+                        Console.Error.WriteLine("\n>>> Unknown option! <<<\n");
+                        break;
+                }
         }
     }
 }
