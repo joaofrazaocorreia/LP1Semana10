@@ -41,9 +41,20 @@ namespace LootSort
         $"[{Kind,15}]\t{Value:f2}\t{Description}";
 
     public int CompareTo(Loot other)
-        {
-            if (other == null) return 1;
-                return other.Kind - this.Kind;
-        }
+    {
+        if (other == null) return 1;
+
+        int same = this.Kind.ToString().CompareTo(other.Kind.ToString());
+
+        if (same == 0)
+            same = other.Value.ToString().CompareTo(this.Value.ToString());
+
+        if (same == 0)
+            same = other.Description.CompareTo(this.Description);
+
+        return same;
+    }
+    
+    
 }
 }
