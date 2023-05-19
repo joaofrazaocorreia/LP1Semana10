@@ -24,7 +24,7 @@ namespace SamePlayer
         public bool Equals(Player p)
         {
             if (p != null)
-                return (this.Name == p.Name) ^ (this.Type == p.Type);
+                return (this.Name == p.Name) && (this.Type == p.Type);
 
             else return false;
         }
