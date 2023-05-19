@@ -55,6 +55,24 @@ namespace LootSort
         return same;
     }
     
-    
+    public override bool Equals(object obj)
+    {
+        return Equals(obj as Loot);
+    }
+
+    public bool Equals(Loot l)
+    {
+        if (l != null)
+            return (this.Kind.ToString() == l.Kind.ToString()) &&
+                   (this.Value.ToString() == l.Value.ToString()) &&
+                   (this.Description == l.Description);
+
+        else return false;
+    }
+
+    public override int GetHashCode()
+    {
+        return HashCode.Combine(Kind, Value, Description);
+    }
 }
 }
